@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de Rocky's</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="code.js"></script>
+</head>
+<body>
+  <form action="procesar_pedido.php" method="post">
+    <div class="logo">
+      <img src="https://scontent.flim28-1.fna.fbcdn.net/v/t39.30808-6/212511065_3019066308328406_1698753603897847360_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeGHn7ri7T4mSlYlHSCNGiDbkBxDmxvNz7CQHEObG83PsBN1Wl4Z49vy6Z7xBq1BNo2wMa0NVawCVTn820mQbl_x&_nc_ohc=8kKri2ZvOFEAX-Y5jXN&_nc_ht=scontent.flim28-1.fna&oh=00_AfAdY-7yrQlGb-tup3hpov0VnIQ1Q0YQiUYkT1v1DSQK0A&oe=64A00861" alt="Logo de Rocky's">
+    </div>
+    <input type="text" name="dni" placeholder="DNI" required>
+    <input type="text" name="telefono" placeholder="Numero telefonico" required>
+    <input type="text" name="nombre" placeholder="Nombre completo" required>
+    <select id="tipoDocumento" name="tipoDocumento" onchange="mostrarCamposFactura()">
+      <option value="boleta">Boleta</option>
+      <option value="factura">Factura</option>
+    </select>
+    <div class="factura-fields">
+      <hr>
+      <input type="text" name="nombreEmpresa" placeholder="Nombre de la empresa">
+      <input type="text" name="numIdentificacion" placeholder="Numero de Identificacion Fiscal o Codigo de Identificacion Fisica">
+      <input type="text" name="codigoPostal" placeholder="Codigo Postal">
+      <input type="text" name="domicilioFiscal" placeholder="Domicilio Fiscal">
+    </div>
+    <hr>
+    <input  type="checkbox" onchange="toggleProductos()"> <strong>Seleccione,</strong> para mostrar el menu disponible
+    <div id="productos-section" style="display: none;">
+      <hr>
+      <p style="font-family:Arial, Helvetica, sans-serif" > <strong style="background-color: yellow;">Menu para compartir en familia :D</strong> </p>
+      <hr>
+
+      <div class="product-option">
+        <input type="checkbox" name="producto[]" value="1/4 de pollo" data-precio="14.59" onchange="actualizarTotal()"> 1/4 de pollo
+        <select id="cantidad-1/4 de pollo" onchange="actualizarTotal()" required name="cantidad-1/4 de pollo">
+          <option disabled selected>Selecciona la cantidad</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <span id="subtotal-1/4 de pollo"></span>
+      </div>
+      <div class="product-option">
+        <input type="checkbox" name="producto[]" value="1/2 pollo" data-precio="35.00" onchange="actualizarTotal()"> 1/2 pollo
+        <select id="cantidad-1/2 pollo" onchange="actualizarTotal()" required name="cantidad-1/2 pollo">
+          <option disabled selected>Selecciona la cantidad</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <span id="subtotal-1/2 pollo"></span>
+      </div>
+      <div class="product-option">
+        <input type="checkbox" name="producto[]" value="1 pollo entero" data-precio="65.00" onchange="actualizarTotal()"> 1 pollo entero
+        <select id="cantidad-1 pollo entero" onchange="actualizarTotal()" required name="cantidad-1 pollo entero">
+          <option disabled selected>Selecciona la cantidad</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <span id="subtotal-1 pollo entero"></span>
+      </div>
+      <div class="product-option">
+        <input type="checkbox" name="producto[]" value="hamburguesa de carne" data-precio="12.99" onchange="actualizarTotal()"> Hamburguesa de carne
+        <select id="cantidad-hamburguesa de carne" onchange="actualizarTotal()" required name="cantidad-hamburguesa de carne">
+          <option disabled selected>Selecciona la cantidad</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <span id="subtotal-hamburguesa de carne"></span>
+      </div>
+    </div>
+    <input type="text" id="total" name="total" readonly>
+    <hr>
+    <input type="submit" value="Realizar pedido">
+  </form>
+</body>
+</html>
